@@ -4,11 +4,11 @@ import logo from '../../../../public/ActionCon.png'
 
 const Navbar = () => {
     const listItems = <>
-    <li><Link to='/'>Home</Link></li>
-    <li><Link to='/blog'> All Toys</Link></li>
-    <li><Link to='/blog'>My Toys</Link></li>
-    <li><Link to='/blog'>Add A Toy</Link></li>
-    <li><Link to='/blog'>Blog</Link></li>
+    <li><Link to='/' className="font-semibold">Home</Link></li>
+    <li><Link to='/blog' className="font-semibold"> All Toys</Link></li>
+    <li><Link to='/blog' className="font-semibold">My Toys</Link></li>
+    <li><Link to='/blog' className="font-semibold">Add A Toy</Link></li>
+    <li><Link to='/blog' className="font-semibold">Blog</Link></li>
             
     </>
     return (
