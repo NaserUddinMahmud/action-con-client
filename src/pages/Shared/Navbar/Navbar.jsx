@@ -1,19 +1,29 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from '../../../../public/ActionCon.png'
 
 
 const Navbar = () => {
     const listItems = <>
-    <li><Link to='/' className="font-semibold">Home</Link></li>
-    <li><Link to='/blog' className="font-semibold"> All Toys</Link></li>
-    <li><Link to='/blog' className="font-semibold">My Toys</Link></li>
-    <li><Link to='/blog' className="font-semibold">Add A Toy</Link></li>
-    <li><Link to='/blogs' className="font-semibold">Blogs</Link></li>
+    <li><NavLink to='/' className={({ isActive }) =>
+                  isActive ? "bg-red-300  font-semibold" : "font-semibold"
+                }>Home</NavLink></li>
+    <li><NavLink to='/blogs' className={({ isActive }) =>
+                  isActive ? "bg-red-300  font-semibold" : "font-semibold"
+                }> All Toys</NavLink></li>
+    <li><NavLink to='/blogs' className={({ isActive }) =>
+                  isActive ? "bg-red-300  font-semibold" : "font-semibold"
+                }>My Toys</NavLink></li>
+    <li><NavLink to='/blogs' className={({ isActive }) =>
+                  isActive ? "bg-red-300  font-semibold" : "font-semibold"
+                }>Add A Toy</NavLink></li>
+    <li><NavLink to='/blogs' className={({ isActive }) =>
+                  isActive ? "bg-red-300  font-semibold" : "font-semibold"
+                }>Blogs</NavLink></li>
             
     </>
     return (
         <div>
-            <div className="navbar bg-base-100">
+            <div className="navbar bg-gray-200">
   <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">

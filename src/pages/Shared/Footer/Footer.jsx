@@ -4,10 +4,10 @@ import logo from '../../../../public/ActionCon.png'
 const Footer = () => {
     return (
         <div>
-            <footer className="footer p-10 bg-base-200 text-base-content">
+            <footer className="footer p-10 bg-gray-200 text-base-content">
   <div>
   <img className="w-52 -ml-4" src={logo} alt="" />
-    <p>ACME Industries Ltd.<br/>Providing reliable tech since 1992</p>
+    <p>ActionCon Ltd.<br/>Copyright © 2023 - All right reserved by ActionCon</p>
   </div> 
   <div>
     <span className="footer-title">Services</span> 
