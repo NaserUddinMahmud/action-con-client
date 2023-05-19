@@ -1,8 +1,19 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from '../../../../public/ActionCon.png'
+import { useContext } from "react";
+import { AuthContext } from "../../../Context/AuthProvider";
 
 
 const Navbar = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+          .then(() => {})
+          .catch((error) => console.error(error));
+      };
+
     const listItems = <>
     <li><NavLink to='/' className={({ isActive }) =>
                   isActive ? "bg-red-300  font-semibold" : "font-semibold"
@@ -44,9 +55,30 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <Link to="/login" className="btn btn-error btn-sm ">
-    Login
-    </Link>
+  {user ? (
+          <>
+            <div className="avatar tooltip tooltip-left"data-tip={user.displayName}>
+              <div className="w-12 rounded-full">
+              {user.photoURL?
+             <><img src={user.photoURL}/></> 
+            : <><img src='
+            https://i.ibb.co/gt2zhwX/abstract-user-flat-1.png'/></>
+
+            }
+              </div>
+            </div>
+            <button onClick={handleLogOut} className="btn btn-error btn-sm">
+              logout
+            </button>
+          </>
+        ) : (
+          <>
+            <Link to="/login" className="btn btn-error btn-sm ">
+              
+              Login
+            </Link>
+          </>
+        )}
   </div>
 </div>
         </div>

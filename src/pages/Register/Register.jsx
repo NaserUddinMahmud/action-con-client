@@ -46,6 +46,7 @@ const Register = () => {
                     name="name"
                     placeholder="name"
                     className="input input-bordered"
+                    required
                   />
                 </div>
                 <div className="form-control">
@@ -57,6 +58,7 @@ const Register = () => {
                     name="email"
                     placeholder="email"
                     className="input input-bordered"
+                    required
                   />
                 </div>
 
@@ -65,11 +67,18 @@ const Register = () => {
                     <span className="label-text">Password</span>
                   </label>
                   <input
-                    type="text"
+                    type="password"
                     name="password"
                     placeholder="password"
                     className="input input-bordered"
+                    required
                   />
+                  <div className="form-control">
+          <label className="label">
+            <span className="label-text">Photo URL</span>
+          </label>
+          <input type="text" name='photo' className="file-input file-input-ghost file-input-bordered w-full max-w-xs px-5" />
+        </div>
                   <label className="label"></label>
                 </div>
                 <p className='text-red-600 '>{error}</p>
