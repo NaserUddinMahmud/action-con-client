@@ -1,15 +1,24 @@
-import { FaGoogle, FaGithub } from "react-icons/fa";
+import { useContext } from "react";
+import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider";
 
 const Login = () => {
-    
-    const handleLogin = event =>{
-        event.preventDefault();
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log(email, password);
-    }
+  const { signIn } = useContext(AuthContext);
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch(error => console.log(error));
+  };
 
   return (
     <div>
@@ -49,23 +58,20 @@ const Login = () => {
                     </a>
                   </label>
                 </div>
-                <div className="form-control mt-6">
+                <div className="form-control mt-2">
                   <button className="btn btn-error">Login</button>
                 </div>
               </div>
             </form>
-            <button  className="btn btn-outline btn-error mx-8">
+            <button className="btn btn-outline btn-error mx-8 mb-6">
               <FaGoogle /> <span className="pl-2">Login with Google</span>
             </button>
-            <button  className="btn btn-outline btn-error mx-8 my-4">
-              <FaGithub />
-              <span className="pl-2">Login with Github</span>
-            </button>
+
             <p className="text-red-600 px-5"></p>
-            <p className="px-5 pb-10">
-              New to ActionCon? {" "}
-               <Link to="/register" className=" btn-link">
-                 Please register!
+            <p className="px-10 pb-10">
+              New to ActionCon?{" "}
+              <Link to="/register" className=" btn-link">
+                Please register!
               </Link>
             </p>
           </div>
