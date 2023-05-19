@@ -1,10 +1,15 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn, signInWithGoogle } = useContext(AuthContext);
+  const [error, setError] = useState("");
+
+  
+
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -16,9 +21,30 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        setError("");
+        
+        Swal.fire({
+          icon: "success",
+          title: "Login Successful!"
+        });
       })
-      .catch(error => console.log(error));
+      .catch((error) => {
+        console.log(error.message);
+        setError(error.message);
+      });
   };
+
+  const handleGoogleSignIn = () =>{
+    signInWithGoogle()
+    .then(result =>{
+      const loggedUser = result.user;
+      console.log(loggedUser);
+      
+  })
+  .catch(error =>{
+      console.log(error);
+  })
+  }
 
   return (
     <div>
@@ -63,11 +89,11 @@ const Login = () => {
                 </div>
               </div>
             </form>
-            <button className="btn btn-outline btn-error mx-8 mb-6">
+            <button onClick={handleGoogleSignIn} className="btn btn-outline btn-error mx-8 mb-6">
               <FaGoogle /> <span className="pl-2">Login with Google</span>
             </button>
 
-            <p className="text-red-600 px-5"></p>
+            <p className="text-red-600 px-10 pb-5">{error}</p>
             <p className="px-10 pb-10">
               New to ActionCon?{" "}
               <Link to="/register" className=" btn-link">

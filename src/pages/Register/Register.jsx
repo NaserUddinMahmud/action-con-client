@@ -2,16 +2,20 @@ import { useContext, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
+import Swal from "sweetalert2";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
   const [error, setError] = useState("");
-  const { createUser } = useContext(AuthContext);
+  const { createUser, signInWithGoogle } = useContext(AuthContext);
+
   const handleRegister = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
+    const photo = form.photo.value;
     console.log(name, email, password);
 
     setError("");
@@ -23,9 +27,41 @@ const Register = () => {
     .then(result => {
         const user = result.user;
         console.log(user);
+        form.reset();
+        updateUserData(user, name,photo);
+        Swal.fire({
+            icon: "success",
+            title: "Registration Successful!"
+          });
     })
     .catch(error => console.log(error));
+    setError(error.message);
   };
+
+
+  const handleGoogleSignIn = () =>{
+    signInWithGoogle()
+    .then(result =>{
+      const loggedUser = result.user;
+      console.log(loggedUser);
+      
+  })
+  .catch(error =>{
+      console.log(error);
+  })
+  }
+
+  const updateUserData = (user, name, photo) =>{
+    updateProfile(user,{
+      displayName: name , photoURL: photo
+    })
+    .then(() =>{
+      console.log('user profile updated')
+    })
+    .catch(error=>{
+      setError(error.message)
+    })
+  }
 
   return (
     <div>
@@ -88,7 +124,7 @@ const Register = () => {
               </div>
             </form>
             
-            <button className="btn btn-outline btn-error mb-6 mx-8">
+            <button onClick={handleGoogleSignIn} className="btn btn-outline btn-error mb-6 mx-8">
               {" "}
               <FaGoogle /> <span className="pl-2">Login with Google</span>
             </button>
