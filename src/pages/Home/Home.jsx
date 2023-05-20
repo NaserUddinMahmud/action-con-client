@@ -5,8 +5,7 @@ import Gallery from "./Gallery";
 
 const Home = () => {
     return (
-        <div>
-            <h2>Hello home</h2>
+        <div className="bg-base-200">
             <Banner></Banner>
             <Gallery></Gallery>
             <Category></Category>

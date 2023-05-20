@@ -1,47 +1,62 @@
-import { useContext } from 'react';
-import Swal from 'sweetalert2'
-import { AuthContext } from '../../Context/AuthProvider';
+import { useContext, useState } from "react";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../Context/AuthProvider";
 
 const AddAToy = () => {
-    const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  const [selectedOption, setSelectedOption] = useState("Marvel");
+  const handleAddToy = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const toyName = form.toyName.value;
+    const sellerName = form.sellerName.value;
+    const sellerEmail = form.sellerEmail.value;
+    const category = selectedOption;
+    const price = form.price.value;
+    const rating = form.rating.value;
+    const quantity = form.quantity.value;
+    const photo = form.photo.value;
+    const description = form.description.value;
 
-    const handleAddToy = event =>{
-        event.preventDefault();
-        const form = event.target;
-        const toyName = form.toyName.value;
-        const sellerName = form.sellerName.value;
-        const sellerEmail = form.sellerEmail.value;
-        const category = form.category.value;
-        const price = form.price.value;
-        const rating = form.rating.value;
-        const quantity = form.quantity.value;
-        const photo = form.photo.value;
-        const description = form.description.value;
+    const newToy = {
+      toyName,
+      sellerName,
+      sellerEmail,
+      category,
+      price,
+      rating,
+      quantity,
+      photo,
+      description,
+    };
 
-        const newToy = {toyName, sellerName, sellerEmail, category, price, rating, quantity, photo, description}
+    console.log(newToy);
 
-        console.log(newToy);
+    fetch("http://localhost:5000/addAToy", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newToy),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "Your toy is added successfully",
+            icon: "success",
+            confirmButtonText: "OK",
+          });
+        }
+      });
+  };
 
-        fetch('http://localhost:5000/addAToy',{
-            method:"POST",
-            headers:{
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(newToy)
-        })
-        .then(res => res.json())
-        .then(data =>{
-            console.log(data);
-            if(data.insertedId){
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Your toy is added successfully',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                  })
-            }
-        })
-    }
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+
   return (
     <div className="bg-base-200 px-24 py-8">
       <h2 className="text-3xl font-bold text-center mb-5">Add a Toy</h2>
@@ -88,17 +103,24 @@ const AddAToy = () => {
             />
           </div>
           <div className="form-control md:w-1/2">
-            <label className="label">
-              <span className="label-text font-medium">Category</span>
-            </label>
-            <input
-              type="text"
-              name="category"
-              placeholder="category"
-              className="input input-bordered w-full"
-            />
-          </div>
+          <label className="label" htmlFor="dropdown">
+            <span className="label-text font-medium">Category</span>
+          </label>
+          <select
+            className="input input-bordered w-full"
+            id="dropdown"
+            value={selectedOption}
+            onChange={handleOptionChange}
+          >
+            <option value="Marvel">Marvel</option>
+            <option value="DC">DC</option>
+            <option value="Star-Wars">Star-Wars</option>
+          </select>
         </div>
+        </div>
+
+       
+
         {/* row */}
         <div className="md:flex justify-center gap-10 mb-2">
           <div className="form-control md:w-1/2">
@@ -155,17 +177,20 @@ const AddAToy = () => {
             <label className="label">
               <span className="label-text font-medium">Description</span>
             </label>
-            <textarea 
+            <textarea
               type="text"
               name="description"
               placeholder="detail description"
               className="textarea textarea-bordered w-full"
             />
           </div>
-          
         </div>
         <div className="flex justify-center">
-        <input type="submit" value="Add toy" className="btn btn-wide btn-error font-bold" />
+          <input
+            type="submit"
+            value="Add toy"
+            className="btn btn-wide btn-error font-bold"
+          />
         </div>
       </form>
     </div>

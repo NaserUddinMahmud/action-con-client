@@ -8,9 +8,6 @@ const Login = () => {
   const { signIn, signInWithGoogle } = useContext(AuthContext);
   const [error, setError] = useState("");
 
-  
-
-
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -22,10 +19,10 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         setError("");
-        
+
         Swal.fire({
           icon: "success",
-          title: "Login Successful!"
+          title: "Login Successful!",
         });
       })
       .catch((error) => {
@@ -34,20 +31,20 @@ const Login = () => {
       });
   };
 
-  const handleGoogleSignIn = () =>{
+  const handleGoogleSignIn = () => {
     signInWithGoogle()
-    .then(result =>{
-      const loggedUser = result.user;
-      console.log(loggedUser);
-      Swal.fire({
-        icon: "success",
-        title: "Login Successful!"
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        Swal.fire({
+          icon: "success",
+          title: "Login Successful!",
+        });
+      })
+      .catch((error) => {
+        console.log(error);
       });
-  })
-  .catch(error =>{
-      console.log(error);
-  })
-  }
+  };
 
   return (
     <div>
@@ -92,7 +89,11 @@ const Login = () => {
                 </div>
               </div>
             </form>
-            <button onClick={handleGoogleSignIn} className="btn btn-outline btn-error mx-8 mb-6">
+
+            <button
+              onClick={handleGoogleSignIn}
+              className="btn btn-outline btn-error mx-8 mb-6"
+            >
               <FaGoogle /> <span className="pl-2">Login with Google</span>
             </button>
 

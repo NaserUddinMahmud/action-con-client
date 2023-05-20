@@ -1,9 +1,24 @@
-import { useLoaderData } from "react-router-dom";
 import TdToys from "./TdToys";
+import { useEffect, useState } from "react";
 
 
 const AllToys = () => {
-    const toys = useLoaderData();
+    
+    const [toys, setToys] = useState([]);
+    useEffect(() => {
+        
+        const fetchData = async () => {
+          try {
+            const response = await fetch('http://localhost:5000/toys'); 
+            const jsonData = await response.json();
+            setToys(jsonData); 
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          }
+        };
+    
+        fetchData();
+      }, []);
 
     return (
         <div className="py-4">
