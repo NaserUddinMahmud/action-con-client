@@ -1,4 +1,9 @@
+import { useContext } from 'react';
+import Swal from 'sweetalert2'
+import { AuthContext } from '../../Context/AuthProvider';
+
 const AddAToy = () => {
+    const {user} = useContext(AuthContext);
 
     const handleAddToy = event =>{
         event.preventDefault();
@@ -17,7 +22,7 @@ const AddAToy = () => {
 
         console.log(newToy);
 
-        fetch('http://localhost:5000/toys',{
+        fetch('http://localhost:5000/addAToy',{
             method:"POST",
             headers:{
                 'content-type': 'application/json'
@@ -27,10 +32,18 @@ const AddAToy = () => {
         .then(res => res.json())
         .then(data =>{
             console.log(data);
+            if(data.insertedId){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Your toy is added successfully',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                  })
+            }
         })
     }
   return (
-    <div className="bg-base-200 p-24">
+    <div className="bg-base-200 px-24 py-8">
       <h2 className="text-3xl font-bold text-center mb-5">Add a Toy</h2>
       <hr />
       <form onSubmit={handleAddToy}>
@@ -54,6 +67,7 @@ const AddAToy = () => {
             <input
               type="text"
               name="sellerName"
+              defaultValue={user?.displayName}
               placeholder="seller name"
               className="input input-bordered w-full"
             />
@@ -68,6 +82,7 @@ const AddAToy = () => {
             <input
               type="text"
               name="sellerEmail"
+              value={user?.email}
               placeholder="email"
               className="input input-bordered w-full"
             />

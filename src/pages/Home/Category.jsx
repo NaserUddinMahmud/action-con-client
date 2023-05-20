@@ -5,9 +5,9 @@ const Category = () => {
     return (
         <>
          <h2 className='text-5xl text-center py-6'>Shop By Category</h2>
-        <div>
+        <div className='text-center'>
              <Tabs>
-    <TabList>
+    <TabList >
       <Tab>Marvel</Tab>
       <Tab>DC</Tab>
       <Tab>Star-Wars</Tab>
