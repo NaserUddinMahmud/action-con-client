@@ -2,7 +2,7 @@ import { useLoaderData } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import CategoryToy from './CategoryToy';
-import { useState } from 'react';
+
 
 const Category = () => {
     const toys = useLoaderData();

@@ -2,7 +2,7 @@ import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 
 const CategoryToy = ({toy}) => {
-    const { toyName, sellerName, category, price, rating, photo } = toy;
+    const { toyName, price, rating, photo } = toy;
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
   <figure className="px-10 pt-10">
