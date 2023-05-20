@@ -24,7 +24,7 @@ const Navbar = () => {
     <li><NavLink to='/blogs' className={({ isActive }) =>
                   isActive ? "bg-red-300  font-semibold" : "font-semibold"
                 }>My Toys</NavLink></li>
-    <li><NavLink to='/blogs' className={({ isActive }) =>
+    <li><NavLink to='/toys' className={({ isActive }) =>
                   isActive ? "bg-red-300  font-semibold" : "font-semibold"
                 }>Add A Toy</NavLink></li>
     <li><NavLink to='/blogs' className={({ isActive }) =>
@@ -45,7 +45,7 @@ const Navbar = () => {
       </ul>
     </div>
     <Link to="/"><div>
-        <img className="w-52" src={logo} alt="" />
+        <img className="w-52" src={logo} alt="ActionCon" />
     </div></Link>
   </div>
   <div className="navbar-center hidden lg:flex">
