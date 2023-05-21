@@ -22,22 +22,18 @@ const AllToys = () => {
       }, []);
 
     return (
-        <div className="py-4">
+        <div className="py-4 mx-20">
             <h2 className="text-3xl font-bold text-center py-5">All Toys: {toys.length}</h2>
             <div className="overflow-x-auto w-full">
   <table className="table w-full">
     {/* head */}
     <thead className="bg-base-300 ">
       <tr>
-        <th>
-          <label>
-            <input type="checkbox" className="checkbox" />
-          </label>
-        </th>
+      
         <th>Name</th>
         <th>Description</th>
         <th>Price</th>
-        <th></th>
+        <th>View Details</th>
       </tr>
     </thead>
     <tbody>

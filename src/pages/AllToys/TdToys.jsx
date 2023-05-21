@@ -2,16 +2,12 @@ const TdToys = ({ toy }) => {
   const { toyName, sellerName, category, price, quantity, photo } = toy;
   return (
     <tr>
-      <th>
-        <label>
-          <input type="checkbox" className="checkbox" />
-        </label>
-      </th>
+     
       <td>
         <div className="flex items-center space-x-3">
           <div className="avatar">
             <div className=" rounded-xl w-16 h-16">
-              <img src={photo} alt="toy photo" />
+              {photo && <img src={photo} alt="toy photo" />}
             </div>
           </div>
           <div>
