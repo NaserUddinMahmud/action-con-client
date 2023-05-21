@@ -9,6 +9,7 @@ import AllToys from "../pages/AllToys/AllToys";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
 import MyToys from "../pages/MyToys/MyToys";
+import UpdateAToy from "../pages/UpdateAToy/UpdateAToy";
 
 
 const router = createBrowserRouter([
@@ -45,6 +46,11 @@ const router = createBrowserRouter([
         {
             path: '/myToys',
             element: <PrivateRoute><MyToys></MyToys></PrivateRoute>
+        },
+        {
+            path: `/updateToys/:id`,
+            element: <PrivateRoute><UpdateAToy></UpdateAToy></PrivateRoute>,
+            loader: ({params}) => fetch(`https://assignment-11-action-con-server.vercel.app/toys/${params.id}`)
         }
       ]
     },

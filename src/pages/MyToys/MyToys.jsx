@@ -17,7 +17,7 @@ const MyToys = () => {
         setToys(data);
         setIsLoading(false);
       });
-  }, []);
+  }, [url]);
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -59,7 +59,7 @@ const MyToys = () => {
               <th>Name</th>
               <th>Description</th>
               <th>Price</th>
-              <th>View Details</th>
+              <th>Update Toy</th>
               <th>Delete</th>
             </tr>
           </thead>
@@ -70,7 +70,7 @@ const MyToys = () => {
                 <progress className="progress w-56 "></progress>
               </div>
             ) : (
-              toys.map((toy) => <MyToysRow key={toy._id} toy={toy} handleDelete={handleDelete}></MyToysRow>)
+              toys.map((toy) => <MyToysRow key={toy._id} toy={toy} handleDelete={handleDelete} ></MyToysRow>)
             )}
           </tbody>
         </table>
