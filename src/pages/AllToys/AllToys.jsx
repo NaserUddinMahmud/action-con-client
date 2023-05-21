@@ -9,7 +9,7 @@ const AllToys = () => {
         
         const fetchData = async () => {
           try {
-            const response = await fetch('http://localhost:5000/toys'); 
+            const response = await fetch('https://assignment-11-action-con-server.vercel.app/toys'); 
             const jsonData = await response.json();
             setToys(jsonData); 
           } catch (error) {

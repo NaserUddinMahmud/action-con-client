@@ -32,7 +32,7 @@ const AddAToy = () => {
 
     console.log(newToy);
 
-    fetch("http://localhost:5000/addAToy", {
+    fetch("https://assignment-11-action-con-server.vercel.app/addAToy", {
       method: "POST",
       headers: {
         "content-type": "application/json",

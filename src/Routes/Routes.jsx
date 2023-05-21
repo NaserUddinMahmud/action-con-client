@@ -16,7 +16,7 @@ const router = createBrowserRouter([
         {
             path: '/',
             element: <Home></Home>,
-            loader: () => fetch('http://localhost:5000/toys')
+            loader: () => fetch('https://assignment-11-action-con-server.vercel.app/toys')
         },
         {
             path: '/blogs',
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
         {
             path: '/toys',
             element: <AllToys></AllToys>,
-            // loader: () => fetch('http://localhost:5000/toys?limit=3')
+            // loader: () => fetch('https://assignment-11-action-con-server.vercel.app/toys?limit=3')
         }
       ]
     },
