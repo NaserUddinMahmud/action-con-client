@@ -4,16 +4,17 @@ import { AuthContext } from "../../Context/AuthProvider";
 
 const AddAToy = () => {
   const { user } = useContext(AuthContext);
-  const [selectedOption, setSelectedOption] = useState("Marvel");
+  const [selectedCategory, setSelectedCategory] = useState("Marvel");
+  const [selectedRating, setSelectedRating] = useState("5");
   const handleAddToy = (event) => {
     event.preventDefault();
     const form = event.target;
     const toyName = form.toyName.value;
     const sellerName = form.sellerName.value;
     const sellerEmail = form.sellerEmail.value;
-    const category = selectedOption;
+    const category = selectedCategory;
     const price = form.price.value;
-    const rating = form.rating.value;
+    const rating = selectedRating;
     const quantity = form.quantity.value;
     const photo = form.photo.value;
     const description = form.description.value;
@@ -53,8 +54,11 @@ const AddAToy = () => {
       });
   };
 
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
+  const handleCategoryChange = (event) => {
+    setSelectedCategory(event.target.value);
+  };
+  const handleRatingChange = (event) => {
+    setSelectedRating(event.target.value);
   };
 
   return (
@@ -110,8 +114,8 @@ const AddAToy = () => {
           <select
             className="input input-bordered w-full"
             id="dropdown"
-            value={selectedOption}
-            onChange={handleOptionChange}
+            value={selectedCategory}
+            onChange={handleCategoryChange}
           >
             <option value="Marvel">Marvel</option>
             <option value="DC">DC</option>
@@ -136,16 +140,24 @@ const AddAToy = () => {
             />
           </div>
           <div className="form-control md:w-1/2">
-            <label className="label">
-              <span className="label-text font-medium">Rating</span>
-            </label>
-            <input
-              type="text"
-              name="rating"
-              placeholder="rating"
-              className="input input-bordered w-full"
-            />
-          </div>
+          <label className="label" htmlFor="dropdown">
+            <span className="label-text font-medium">Rating</span>
+          </label>
+          <select
+            className="input input-bordered w-full"
+            id="dropdown"
+            value={selectedRating}
+            onChange={handleRatingChange}
+          >
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            
+          </select>
+        </div>
         </div>
         {/* row */}
         <div className="md:flex justify-center gap-10 mb-2">
