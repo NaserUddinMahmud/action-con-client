@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 
 const AllToys = () => {
-    
+    const [isLoading, setIsLoading] = useState(true);
     const [toys, setToys] = useState([]);
     useEffect(() => {
         
@@ -11,6 +11,7 @@ const AllToys = () => {
           try {
             const response = await fetch('https://assignment-11-action-con-server.vercel.app/toys'); 
             const jsonData = await response.json();
+            setIsLoading(false)
             setToys(jsonData); 
           } catch (error) {
             console.error('Error fetching data:', error);
@@ -41,7 +42,7 @@ const AllToys = () => {
     </thead>
     <tbody>
       {/* row 1 */}
-      {toys.map(toy=><TdToys
+      {isLoading ? <div ><progress className="progress w-56 "></progress></div> :toys.map(toy=><TdToys
       key={toy._id}
       toy={toy}
       ></TdToys>)}

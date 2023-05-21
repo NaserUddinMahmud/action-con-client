@@ -100,6 +100,7 @@ const AddAToy = () => {
               value={user?.email}
               placeholder="email"
               className="input input-bordered w-full"
+              readOnly
             />
           </div>
           <div className="form-control md:w-1/2">
