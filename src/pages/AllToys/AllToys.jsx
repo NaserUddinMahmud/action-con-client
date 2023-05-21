@@ -22,7 +22,7 @@ const AllToys = () => {
       }, []);
 
     return (
-        <div className="py-4 mx-20">
+        <div className="py-4 mx-10">
             <h2 className="text-3xl font-bold text-center py-5">All Toys: {toys.length}</h2>
             <div className="overflow-x-auto w-full">
   <table className="table w-full">

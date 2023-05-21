@@ -47,7 +47,7 @@ const MyToys = () => {
   };
 
   return (
-    <div className="py-4 mx-20">
+    <div className="py-4 mx-10">
       <h2 className="text-3xl font-bold text-center py-5">
         My Toys: {toys.length}
       </h2>
@@ -66,9 +66,9 @@ const MyToys = () => {
           <tbody>
             {/* row 1 */}
             {isLoading ? (
-              <div>
+              
                 <progress className="progress w-56 "></progress>
-              </div>
+              
             ) : (
               toys.map((toy) => <MyToysRow key={toy._id} toy={toy} handleDelete={handleDelete} ></MyToysRow>)
             )}
