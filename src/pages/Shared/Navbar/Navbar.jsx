@@ -28,7 +28,7 @@ const Navbar = () => {
     <li><NavLink to='/toys' className={({ isActive }) =>
                   isActive ? "bg-red-300  font-semibold" : "font-semibold"
                 }> All Toys</NavLink></li>
-    <li><NavLink to='/blogs' className={({ isActive }) =>
+    <li><NavLink to='/myToys' className={({ isActive }) =>
                   isActive ? "bg-red-300  font-semibold" : "font-semibold"
                 }>My Toys</NavLink></li>
     <li><NavLink to='/addAToy' className={({ isActive }) =>

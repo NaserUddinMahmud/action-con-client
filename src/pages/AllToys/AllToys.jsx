@@ -23,7 +23,7 @@ const AllToys = () => {
 
     return (
         <div className="py-4">
-            <h2 className="text-3xl font-bold text-center py-5">All toys</h2>
+            <h2 className="text-3xl font-bold text-center py-5">All Toys: {toys.length}</h2>
             <div className="overflow-x-auto w-full">
   <table className="table w-full">
     {/* head */}
