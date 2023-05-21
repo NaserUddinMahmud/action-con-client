@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import logo from '../../../../public/ActionCon.png'
 import { useContext } from "react";
 import { AuthContext } from "../../../Context/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const Navbar = () => {
@@ -10,7 +11,13 @@ const Navbar = () => {
 
     const handleLogOut = () => {
         logOut()
-          .then(() => {})
+          .then(() => {
+            Swal.fire({
+                icon: "info",
+                title: "You Have Logged Out!",
+                
+              });
+          })
           .catch((error) => console.error(error));
       };
 
@@ -57,8 +64,8 @@ const Navbar = () => {
   <div className="navbar-end">
   {user ? (
           <>
-            <div className="avatar tooltip tooltip-left"data-tip={user.displayName}>
-              <div className="w-12 rounded-full me-4">
+            <div className="avatar tooltip tooltip-bottom"data-tip={user.displayName}>
+              <div className="w-12 rounded-2xl me-4">
               {user.photoURL?
              <><img src={user.photoURL}/></> 
             : <><img src='

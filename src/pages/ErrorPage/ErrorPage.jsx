@@ -12,8 +12,8 @@ const ErrorPage = () => {
         <div>
             <img src="https://images-na.ssl-images-amazon.com/images/I/61lO1Gn6WNL._AC_UL600_SR600,600_.jpg" alt="" />
         </div>
-          <h2 className='mb-8 font-extrabold text-5xl text-gray-600'>
-            <span className='sr-only'>Error</span> {status || 404}
+          <h2 className='mb-8 font-semibold text-4xl text-red-400'>
+            <span className='font-semibold'>Ow, Snap!</span><span className='sr-only'>Error</span> {status || 404}!
           </h2>
           <p className='text-2xl font-semibold md:text-3xl mb-8'>
             {error?.message}

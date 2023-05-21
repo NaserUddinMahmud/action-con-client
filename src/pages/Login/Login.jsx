@@ -1,12 +1,13 @@
 import { useContext, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
   const { signIn, signInWithGoogle } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -20,9 +21,12 @@ const Login = () => {
         console.log(user);
         setError("");
 
+        navigate('/')
+
         Swal.fire({
           icon: "success",
           title: "Login Successful!",
+          
         });
       })
       .catch((error) => {
@@ -36,9 +40,11 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        navigate('/')
         Swal.fire({
           icon: "success",
           title: "Login Successful!",
+          
         });
       })
       .catch((error) => {
