@@ -1,4 +1,5 @@
-
+import { FaBeer } from 'react-icons/fa';
+import { GrDeliver} from 'react-icons/gr';
 
 const Brands = () => {
     return (
@@ -11,6 +12,7 @@ const Brands = () => {
                 <img className="w-24 h-20" src="https://i.ibb.co/6RxDJvd/comic-hdlogo-40801.png" alt="" />
                 <img className="w-36 h-20" src="https://i.ibb.co/sWQfKyF/pngegg.png" alt="" />
             </div>
+            
         </div>
     );
 };

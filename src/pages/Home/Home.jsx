@@ -2,12 +2,14 @@ import Banner from "./Banner";
 import Brands from "./Brands";
 import Category from "./Category";
 import Gallery from "./Gallery";
+import Services from "./Services";
 
 
 const Home = () => {
     return (
         <div className="bg-base-200">
             <Banner></Banner>
+            <Services></Services>
             <Gallery></Gallery>
             <Category></Category>
             <Brands></Brands>
