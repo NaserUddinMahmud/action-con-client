@@ -5,7 +5,6 @@ import "@smastrom/react-rating/style.css";
 const ToyDetails = () => {
   const toy = useLoaderData();
   const {
-    _id,
     toyName,
     sellerName,
     sellerEmail,
@@ -42,8 +41,7 @@ const ToyDetails = () => {
             Available Quantity: {quantity}
           </p>
 
-          
-        <div className="flex lg:flex-col justify-center mb-4">
+          <div className="flex lg:flex-col justify-center mb-4">
             <Rating style={{ maxWidth: 120 }} value={rating} readOnly />
           </div>
           <p className="py-2  font-semibold lg:text-left">

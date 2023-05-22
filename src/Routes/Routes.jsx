@@ -54,7 +54,7 @@ const router = createBrowserRouter([
             loader: ({params}) => fetch(`https://assignment-11-action-con-server.vercel.app/toys/${params.id}`)
         },
         {
-            path: '/toys/:id',
+            path: '/toysDetail/:id',
             element: <PrivateRoute><ToyDetails></ToyDetails></PrivateRoute>,
             loader: ({params}) => fetch(`https://assignment-11-action-con-server.vercel.app/toys/${params.id}`)
         }
