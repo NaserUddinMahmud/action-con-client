@@ -43,7 +43,7 @@ const AllToys = () => {
           placeholder="Search by toy name"
           value={searchQuery}
           onChange={handleSearchChange}
-          className="input input-bordered input-ghost w-full max-w-xs my-5"
+          className="input input-bordered input-error w-full max-w-xs my-5"
         />
       </div>
 

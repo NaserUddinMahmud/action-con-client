@@ -7,7 +7,8 @@ const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(true);
   const [toys, setToys] = useState([]);
-  console.log("mytoys", user);
+  const [sortOrder, setSortOrder] = useState('asc');
+
 
   const url = `https://assignment-11-action-con-server.vercel.app/myToys?email=${user?.email}`;
   useEffect(() => {
@@ -46,11 +47,41 @@ const MyToys = () => {
     });
   };
 
+
+  const handleSortOrderChange = (event) => {
+    setSortOrder(event.target.value);
+  };
+
+  const sortToys = () => {
+    const sortedToys = [...toys].sort((a, b) => {
+      if (sortOrder === 'asc') {
+        return a.price - b.price;
+      } else {
+        return b.price - a.price;
+      }
+    });
+    setToys(sortedToys);
+  };
+
+
   return (
     <div className="py-4 mx-10">
       <h2 className="text-3xl font-bold text-center py-5">
-        My Toys: {toys.length}
-      </h2>
+        My Toys </h2>
+
+
+        <div className="flex justify-center gap-4 my-4">
+      
+      <select  className="input input-bordered input-error w-full max-w-xs"  value={sortOrder} onChange={handleSortOrderChange}>
+        <option value="asc">Ascending</option>
+        <option value="desc">Descending</option>
+      </select>
+      <button className="btn btn-error" onClick={sortToys}>Sort Toys</button>
+      
+    </div>
+
+
+
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           {/* head */}
