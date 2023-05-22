@@ -28,12 +28,12 @@ const Navbar = () => {
     <li><NavLink to='/toys' className={({ isActive }) =>
                   isActive ? "bg-red-300  font-semibold" : "font-semibold"
                 }> All Toys</NavLink></li>
-    <li><NavLink to='/myToys' className={({ isActive }) =>
+    {user && <><li><NavLink to='/myToys' className={({ isActive }) =>
                   isActive ? "bg-red-300  font-semibold" : "font-semibold"
                 }>My Toys</NavLink></li>
     <li><NavLink to='/addAToy' className={({ isActive }) =>
                   isActive ? "bg-red-300  font-semibold" : "font-semibold"
-                }>Add A Toy</NavLink></li>
+                }>Add A Toy</NavLink></li></>}
     <li><NavLink to='/blogs' className={({ isActive }) =>
                   isActive ? "bg-red-300  font-semibold" : "font-semibold"
                 }>Blogs</NavLink></li>

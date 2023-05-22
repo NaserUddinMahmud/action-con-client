@@ -19,7 +19,7 @@ const PrivateRoute = ({children}) => {
     <Navigate state={{from: location}} to='/login' replace>
         { Swal.fire({
                 icon: "warning",
-                title: "You Have To Log In To Visit This Page!",
+                title: "You have to log in to visit this page!",
                 
               })}
     </Navigate>
