@@ -90,13 +90,9 @@ const Login = () => {
                     placeholder="password"
                     className="input input-bordered"
                   />
-                  <label className="label">
-                    <a href="#" className="label-text-alt link link-hover">
-                      Forgot password?
-                    </a>
-                  </label>
+                  
                 </div>
-                <div className="form-control mt-2">
+                <div className="form-control mt-5">
                   <button className="btn btn-error">Login</button>
                 </div>
               </div>

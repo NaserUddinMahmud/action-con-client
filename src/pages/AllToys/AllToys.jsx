@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet";
-import TdToys from "./TdToys";
+import AllToysRow from "./AllToysRow";
 import { useEffect, useState } from "react";
 
 const AllToys = () => {
@@ -69,7 +69,7 @@ const AllToys = () => {
               </div>
             ) : (
               filteredToys.map((toy) => (
-                <TdToys key={toy._id} toy={toy}></TdToys>
+                <AllToysRow key={toy._id} toy={toy}></AllToysRow>
               ))
             )}
           </tbody>

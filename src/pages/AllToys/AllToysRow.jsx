@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const TdToys = ({ toy }) => {
+const AllToysRow = ({ toy }) => {
   const { _id, toyName, sellerName, category, price, quantity, photo } = toy;
   return (
     <tr>
@@ -33,4 +33,4 @@ const TdToys = ({ toy }) => {
   );
 };
 
-export default TdToys;
+export default AllToysRow;
