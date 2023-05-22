@@ -2,13 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import MyToysRow from "./MyToysRow";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(true);
   const [toys, setToys] = useState([]);
-  const [sortOrder, setSortOrder] = useState('asc');
-
+  const [sortOrder, setSortOrder] = useState("asc");
 
   const url = `https://assignment-11-action-con-server.vercel.app/myToys?email=${user?.email}`;
   useEffect(() => {
@@ -39,7 +39,7 @@ const MyToys = () => {
             console.log(data);
             if (data.deletedCount > 0) {
               Swal.fire("Deleted!", "Your toy has been deleted.", "success");
-              const remaining = toys.filter(toy => toy._id !== id);
+              const remaining = toys.filter((toy) => toy._id !== id);
               setToys(remaining);
             }
           });
@@ -47,14 +47,13 @@ const MyToys = () => {
     });
   };
 
-
   const handleSortOrderChange = (event) => {
     setSortOrder(event.target.value);
   };
 
   const sortToys = () => {
     const sortedToys = [...toys].sort((a, b) => {
-      if (sortOrder === 'asc') {
+      if (sortOrder === "asc") {
         return a.price - b.price;
       } else {
         return b.price - a.price;
@@ -63,24 +62,26 @@ const MyToys = () => {
     setToys(sortedToys);
   };
 
-
   return (
     <div className="py-4 mx-10">
-      <h2 className="text-3xl font-bold text-center py-5">
-        My Toys </h2>
+      <Helmet>
+        <title>ActionCon | My Toys</title>
+      </Helmet>
+      <h2 className="text-3xl font-bold text-center py-5">My Toys </h2>
 
-
-        <div className="flex justify-center gap-4 my-4">
-      
-      <select  className="input input-bordered input-error w-full max-w-xs"  value={sortOrder} onChange={handleSortOrderChange}>
-        <option value="asc">Ascending</option>
-        <option value="desc">Descending</option>
-      </select>
-      <button className="btn btn-error" onClick={sortToys}>Sort Toys</button>
-      
-    </div>
-
-
+      <div className="flex justify-center gap-4 my-4">
+        <select
+          className="input input-bordered input-error w-full max-w-xs"
+          value={sortOrder}
+          onChange={handleSortOrderChange}
+        >
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
+        <button className="btn btn-error" onClick={sortToys}>
+          Sort Toys
+        </button>
+      </div>
 
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
@@ -97,11 +98,15 @@ const MyToys = () => {
           <tbody>
             {/* row 1 */}
             {isLoading ? (
-              
-                <progress className="progress w-56 "></progress>
-              
+              <progress className="progress w-56 "></progress>
             ) : (
-              toys.map((toy) => <MyToysRow key={toy._id} toy={toy} handleDelete={handleDelete} ></MyToysRow>)
+              toys.map((toy) => (
+                <MyToysRow
+                  key={toy._id}
+                  toy={toy}
+                  handleDelete={handleDelete}
+                ></MyToysRow>
+              ))
             )}
           </tbody>
         </table>

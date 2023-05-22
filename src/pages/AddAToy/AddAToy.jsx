@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const AddAToy = () => {
   const { user } = useContext(AuthContext);
@@ -63,6 +64,9 @@ const AddAToy = () => {
 
   return (
     <div className="bg-base-200 px-24 py-8">
+        <Helmet>
+        <title>ActionCon | Add A Toy</title>
+      </Helmet>
       <h2 className="text-3xl font-bold text-center mb-5">Add a Toy</h2>
       <hr />
       <form onSubmit={handleAddToy}>

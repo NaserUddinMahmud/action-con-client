@@ -1,6 +1,11 @@
+import { Helmet } from "react-helmet";
+
 const Blogs = () => {
   return (
     <div className="text-justify">
+      <Helmet>
+        <title>ActionCon | Blogs</title>
+      </Helmet>
       <div className="px-8 py-3">
         <h2 className="text-2xl font-medium mt-5">
           1. What is an access token and refresh token? How do they work and
@@ -41,13 +46,13 @@ const Blogs = () => {
           new access token to continue accessing the resources. To get a new
           access token without authenticating again the user needs to use the
           refresh token. The client-side application sends a request to the
-          authentication server for a new access token with the refresh token. The server
-          verifies if the refresh token is valid and issues a new access token.
-          The new access token allows the user to continue accessing the
-          resources. If a user logs out or if there is a security risk, the
-          authentication server can invalidate the access token and refresh
-          token, making them no longer usable. In this case the user needs to go
-          through the authentication process again.
+          authentication server for a new access token with the refresh token.
+          The server verifies if the refresh token is valid and issues a new
+          access token. The new access token allows the user to continue
+          accessing the resources. If a user logs out or if there is a security
+          risk, the authentication server can invalidate the access token and
+          refresh token, making them no longer usable. In this case the user
+          needs to go through the authentication process again.
         </p>
         <p className="pb-3">
           On the client side we can store the tokens in either local storage or
@@ -67,9 +72,9 @@ const Blogs = () => {
           complex data structures and applications that require relational
           integrity. NoSQL databases are Non-relational and more flexible
           databases. They are more suitable where high read or write performance
-          is more important than enforcing strict relationships. For interacting with the data in SQL
-          databases Standardized
-          Query Language (SQL) is used . SQL provides a powerful and expressive syntax for querying,
+          is more important than enforcing strict relationships. For interacting
+          with the data in SQL databases Standardized Query Language (SQL) is
+          used . SQL provides a powerful and expressive syntax for querying,
           manipulating, and aggregating the data. NoSQL databases typically have
           their own query languages or APIs that are specific to the database
           type. The query languages in NoSQL databases are often simpler and
@@ -122,12 +127,12 @@ const Blogs = () => {
           <li>Single purpose aggregation methods</li>
         </ul>
         <p className="pb-3">
-          In aggregation pipeline, the aggregate function works by taking an array of aggregation
-          pipeline stages as its argument. Each stage represents a specific
-          operation to be applied to the documents in the collection. The
-          documents are processed through the stages in the order they are
-          defined, with the output of one stage becoming the input for the next
-          stage.
+          In aggregation pipeline, the aggregate function works by taking an
+          array of aggregation pipeline stages as its argument. Each stage
+          represents a specific operation to be applied to the documents in the
+          collection. The documents are processed through the stages in the
+          order they are defined, with the output of one stage becoming the
+          input for the next stage.
         </p>
         <p className="pb-10">
           Single purpose aggregation methods are simpler, but they lack the

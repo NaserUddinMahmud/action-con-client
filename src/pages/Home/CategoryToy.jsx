@@ -2,9 +2,12 @@ import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import { Link } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
+import { useContext } from 'react';
+import { AuthContext } from '../../Context/AuthProvider';
 const notify = () => toast.error('You have to log in first to view details');
 
 const CategoryToy = ({toy}) => {
+    const { user } = useContext(AuthContext);
    
     const {_id, toyName, price, rating, photo } = toy;
   return (
@@ -18,7 +21,7 @@ const CategoryToy = ({toy}) => {
     <div>
     <Rating style={{ maxWidth: 120 }} value={rating} readOnly />
     </div>
-    <div className="card-actions"><Link to={`/toysDetail/${_id}`}><button onClick={notify} className="btn btn-error">View Details</button><Toaster /></Link> 
+    <div className="card-actions"><Link to={`/toysDetail/${_id}`}><button onClick={user || notify} className="btn btn-error">View Details</button> <Toaster /><Toaster /></Link> 
   
       
     </div>

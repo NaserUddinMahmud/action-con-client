@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import TdToys from "./TdToys";
 import { useEffect, useState } from "react";
 
@@ -34,8 +35,10 @@ const AllToys = () => {
 
   return (
     <div className="py-4 mx-10">
-      <h2 className="text-3xl font-bold text-center py-5">
-        All Toys </h2>
+      <Helmet>
+        <title>ActionCon | All Toys</title>
+      </Helmet>
+      <h2 className="text-3xl font-bold text-center py-5">All Toys </h2>
 
       <div className="flex justify-center">
         <input
@@ -65,7 +68,9 @@ const AllToys = () => {
                 <progress className="progress w-56 "></progress>
               </div>
             ) : (
-                filteredToys.map((toy) => <TdToys key={toy._id} toy={toy}></TdToys>)
+              filteredToys.map((toy) => (
+                <TdToys key={toy._id} toy={toy}></TdToys>
+              ))
             )}
           </tbody>
         </table>

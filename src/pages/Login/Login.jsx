@@ -3,16 +3,16 @@ import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { signIn, signInWithGoogle } = useContext(AuthContext);
 
   const [error, setError] = useState("");
-  
+
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || '/';
- 
+  const from = location.state?.from?.pathname || "/";
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -26,12 +26,11 @@ const Login = () => {
         console.log(user);
         setError("");
         form.reset();
-        navigate(from, {replace:true});
+        navigate(from, { replace: true });
 
         Swal.fire({
           icon: "success",
           title: "Login Successful!",
-          
         });
       })
       .catch((error) => {
@@ -45,11 +44,10 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        navigate(from, {replace:true});
+        navigate(from, { replace: true });
         Swal.fire({
           icon: "success",
           title: "Login Successful!",
-          
         });
       })
       .catch((error) => {
@@ -58,7 +56,10 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <>
+      <Helmet>
+        <title>ActionCon | Login</title>
+      </Helmet>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col">
           <div>
@@ -118,7 +119,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

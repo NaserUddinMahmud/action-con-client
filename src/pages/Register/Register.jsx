@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 import Swal from "sweetalert2";
 import { updateProfile } from "firebase/auth";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
     const { createUser, signInWithGoogle } = useContext(AuthContext);
@@ -79,6 +80,9 @@ const Register = () => {
 
   return (
     <div>
+        <Helmet>
+        <title>ActionCon | Register</title>
+      </Helmet>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col">
           <div>
