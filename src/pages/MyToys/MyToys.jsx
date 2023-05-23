@@ -8,7 +8,7 @@ const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(true);
   const [toys, setToys] = useState([]);
-  const [sortOrder, setSortOrder] = useState("asc");
+  
 
   const url = `https://assignment-11-action-con-server.vercel.app/myToys?email=${user?.email}`;
   useEffect(() => {
@@ -48,18 +48,19 @@ const MyToys = () => {
   };
 
   const handleSortOrderChange = (event) => {
-    setSortOrder(event.target.value);
+    const sortOrder = event.target.value;
+    sortToys(sortOrder);
   };
 
-  const sortToys = () => {
-    const sortedToys = [...toys].sort((a, b) => {
-      if (sortOrder === "asc") {
-        return a.price - b.price;
-      } else {
-        return b.price - a.price;
-      }
-    });
-    setToys(sortedToys);
+  const sortToys = (sortOrder) => {
+    fetch(`https://assignment-11-action-con-server.vercel.app/myToys?sortOrder=${sortOrder}`)
+      .then((response) => response.json())
+      .then((sortedToys) => {
+        setToys(sortedToys);
+      })
+      .catch((error) => {
+        console.error('Error sorting toys:', error);
+      });
   };
 
   return (
@@ -70,17 +71,16 @@ const MyToys = () => {
       <h2 className="text-3xl font-bold text-center py-5">My Toys </h2>
 
       <div className="flex justify-center gap-4 my-4">
+      <label className="label" htmlFor="dropdown">
+            <span className="label-text font-medium">Sort by Price</span>
+          </label>
         <select
           className="input input-bordered input-error w-full max-w-xs"
-          value={sortOrder}
-          onChange={handleSortOrderChange}
+          onClick={handleSortOrderChange}
         >
           <option value="asc">Ascending</option>
           <option value="desc">Descending</option>
         </select>
-        <button className="btn btn-error" onClick={sortToys}>
-          Sort Toys
-        </button>
       </div>
 
       <div className="overflow-x-auto w-full">
