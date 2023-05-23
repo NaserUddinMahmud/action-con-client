@@ -53,7 +53,7 @@ const MyToys = () => {
   };
 
   const sortToys = (sortOrder) => {
-    fetch(`https://assignment-11-action-con-server.vercel.app/myToys?sortOrder=${sortOrder}`)
+    fetch(`https://assignment-11-action-con-server.vercel.app/myToys?email=${user?.email}&sortOrder=${sortOrder}`)
       .then((response) => response.json())
       .then((sortedToys) => {
         setToys(sortedToys);
