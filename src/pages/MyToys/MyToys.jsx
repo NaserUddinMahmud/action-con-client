@@ -10,7 +10,7 @@ const MyToys = () => {
   const [toys, setToys] = useState([]);
   
 
-  const url = `https://assignment-11-action-con-server.vercel.app/myToys?email=${user?.email}`;
+  const url = `http://localhost:5000/myToys?email=${user?.email}`;
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
@@ -31,7 +31,7 @@ const MyToys = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://assignment-11-action-con-server.vercel.app/toys/${id}`, {
+        fetch(`http://localhost:5000/toys/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -53,7 +53,7 @@ const MyToys = () => {
   };
 
   const sortToys = (sortOrder) => {
-    fetch(`https://assignment-11-action-con-server.vercel.app/myToys?email=${user?.email}&sortOrder=${sortOrder}`)
+    fetch(`http://localhost:5000/myToys?email=${user?.email}&sortOrder=${sortOrder}`)
       .then((response) => response.json())
       .then((sortedToys) => {
         setToys(sortedToys);

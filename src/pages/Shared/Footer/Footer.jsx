@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import logo from '../../../../public/ActionCon.png'
+import logo from '../../../assets/ActionCon.png'
 import { FaPhoneAlt, FaRegEnvelope,FaStore, FaFacebookF,FaTwitter,FaYoutube,FaInstagram } from "react-icons/fa";
 
 

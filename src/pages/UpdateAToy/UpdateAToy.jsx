@@ -31,7 +31,7 @@ const UpdateAToy = () => {
 
     console.log(updatedToy);
 
-    fetch(`https://assignment-11-action-con-server.vercel.app/toys/${_id}`, {
+    fetch(`http://localhost:5000/toys/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

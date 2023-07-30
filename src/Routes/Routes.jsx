@@ -22,7 +22,7 @@ const router = createBrowserRouter([
         {
             path: '/',
             element: <Home></Home>,
-            loader: () => fetch('https://assignment-11-action-con-server.vercel.app/toys')
+            loader: () => fetch('http://localhost:5000/toys')
         },
         {
             path: '/blogs',
@@ -51,12 +51,12 @@ const router = createBrowserRouter([
         {
             path: '/updateToys/:id',
             element: <PrivateRoute><UpdateAToy></UpdateAToy></PrivateRoute>,
-            loader: ({params}) => fetch(`https://assignment-11-action-con-server.vercel.app/toys/${params.id}`)
+            loader: ({params}) => fetch(`http://localhost:5000/toys/${params.id}`)
         },
         {
             path: '/toysDetail/:id',
             element: <PrivateRoute><ToyDetails></ToyDetails></PrivateRoute>,
-            loader: ({params}) => fetch(`https://assignment-11-action-con-server.vercel.app/toys/${params.id}`)
+            loader: ({params}) => fetch(`http://localhost:5000/toys/${params.id}`)
         }
       ]
     },

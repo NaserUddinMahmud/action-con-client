@@ -14,7 +14,7 @@ const AllToys = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://assignment-11-action-con-server.vercel.app/toys?limit${20}&search=${searchQuery}`
+          `http://localhost:5000/toys?search=${searchQuery}`
         );
         const jsonData = await response.json();
         setIsLoading(false);
